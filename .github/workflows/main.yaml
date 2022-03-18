@@ -53,6 +53,12 @@ jobs:
         with:
           name: Bandit
           path: bandit-output.json
+       
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+
+      - run: pip3 install requests
 
       - uses: actions/setup-python@v2
         with:
