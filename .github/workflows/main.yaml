@@ -52,7 +52,6 @@ jobs:
         with:
           name: Bandit
           path: bandit-output.json
-        if: always()                        # what is this for?
 
       - uses: actions/setup-python@v2
         with:
