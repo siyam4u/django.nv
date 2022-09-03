@@ -41,7 +41,7 @@ jobs:
           pip install -r requirements.txt
           python manage.py test taskManager
 
-    oast-snyk:
+  oast-snyk:
     runs-on: ubuntu-latest
     needs: test
     steps:
@@ -68,6 +68,7 @@ jobs:
           name: Snyk               
           path: snyk-results.json
         if: always()        # what is this for?
+        
   integration:
     runs-on: ubuntu-latest
     needs: test
