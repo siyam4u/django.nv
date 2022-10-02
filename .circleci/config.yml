@@ -24,7 +24,7 @@ jobs:
           command: |
             echo "my artifact file" > /tmp/artifact-1/myfile.txt
             echo $?
-          when: on_fail         # Even if the job fails, continue to the next stages
+          when: always         # Even if the job fails, continue to the next stages
 
       - store_artifacts:
           path: /tmp/artifact-1/myfile.txt
