@@ -39,7 +39,8 @@ jobs:
       - run:
           command: |
             echo "This is an integration step"
-          when: on_fail    
+          when: on_fail
+  when: on_fail
 
   prod:
     docker:
