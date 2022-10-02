@@ -23,13 +23,8 @@ jobs:
       - checkout
 
       - run:
-          command: docker run --rm -v $(pwd):/src hysnsec/trufflehog file:///src --json > trufflehog-output.json
+          command: dsdsdsdsds
           when: on_fail             # Even if the job fails, continue to the next stages
-
-      - store_artifacts:
-          path: trufflehog-output.json
-          destination: trufflehog-artifact
-          when: always
 
   integration:
     docker:
