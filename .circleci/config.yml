@@ -44,12 +44,8 @@ workflows:
   django:
     jobs:
       - build
-      - secret_scanning:
-          requires:
-            - build
-      - integration:
-          requires:
-            - secret_scanning
+      - secret_scanning
+      - integration
       - prod:
           type: approval
           requires:
