@@ -23,7 +23,6 @@ jobs:
       - run:
           command: |
             echo "my artifact file" > /tmp/artifact-1/myfile.txt
-            echo $?
           when: always         # Even if the job fails, continue to the next stages
 
       - store_artifacts:
