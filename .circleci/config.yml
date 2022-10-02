@@ -23,7 +23,10 @@ jobs:
       - checkout
 
       - run:
-          command: dsdsdsdsds
+          command: |
+            echo "This is an secret scanning"
+            exit 1
+          when: on_fail         # Even if the job fails, continue to the next stages
 
   integration:
     docker:
