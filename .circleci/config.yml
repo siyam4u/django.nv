@@ -26,7 +26,7 @@ jobs:
           command: |
             echo "This is an secret scanning"
             exit 1
-          when: always         # Even if the job fails, continue to the next stages
+          when: fail         # Even if the job fails, continue to the next stages
 
   integration:
     docker:
