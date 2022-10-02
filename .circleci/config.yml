@@ -8,6 +8,7 @@ jobs:
       - run: |                              # similar to "script" in GitLab
           pip install -r requirements.txt
           python manage.py check
+          exit 1
 
   secret_scanning:
     machine: true
