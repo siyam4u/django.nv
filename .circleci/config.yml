@@ -30,6 +30,11 @@ jobs:
           path: /tmp/myfile.txt
           destination: artifact-file
           
+      - run:
+          command: |
+            echo "ls -al"
+          when: always  
+          
   integration:
     docker:
       - image: python:3.6
