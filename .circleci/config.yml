@@ -22,13 +22,15 @@ jobs:
     steps:
       - run:
           command: |
-            echo "This is an secret scanning" >> output_file.txt
+            echo "my artifact file" > /tmp/artifact-1;
             exit 1
             echo $?
           when: on_fail         # Even if the job fails, continue to the next stages
+
       - store_artifacts:
-          path: output_file.txt
-          destination: output_file
+          path: /tmp/artifact-1
+          destination: artifact-file
+          
   integration:
     docker:
       - image: python:3.6
