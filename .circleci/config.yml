@@ -25,7 +25,6 @@ jobs:
           command: |
             echo "my artifact file" > /tmp/myfile.txt
             exit 1
-          when: on_fail  
 
       - store_artifacts:
           path: /tmp/myfile.txt
