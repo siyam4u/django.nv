@@ -1,51 +1,26 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
+  say-hello:
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: python:3.6                   # similar to "image" in GitLab
-    steps:
-      - checkout
-      - run: |                              # similar to "script" in GitLab
-          pip install -r requirements.txt
-          python manage.py check
-
-  test:
-    docker:
-      - image: python:3.6
-    steps:
-      - checkout
-      - run: |
-          pip install -r requirements.txt
-          python manage.py test taskManager
-
-  integration:
-    docker:
-      - image: python:3.6
+      - image: cimg/base:stable
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
       - run:
-          command: |
-            echo "This is an integration step"
-            exit 1
+          name: "Say hello"
+          command: "echo Hello, World!"
 
-  prod:
-    docker:
-      - image: python:3.6
-    steps:
-      - checkout
-      - run: echo "This is a deploy step."
-
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  version: 2
-  django:
+  say-hello-workflow:
     jobs:
-      - build
-      - test:
-          requires:
-            - build 
-      - integration:
-          requires:
-            - test
-      - prod:
-          type: approval
-          requires:
-            - integration
+      - say-hello
