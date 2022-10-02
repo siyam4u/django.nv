@@ -26,7 +26,6 @@ jobs:
           command: |
             echo "This is an secret scanning"
             exit 1
-          when: on_fail         # Even if the job fails, continue to the next stages
 
   integration:
     docker:
@@ -61,6 +60,5 @@ workflows:
           requires:
             - secret_scanning
       - prod:
-          type: approval
           requires:
             - integration
