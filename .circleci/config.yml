@@ -20,8 +20,6 @@ jobs:
   secret_scanning:
     machine: true
     steps:
-      - checkout
-
       - run:
           command: |
             echo "This is an secret scanning"
