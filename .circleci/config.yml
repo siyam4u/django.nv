@@ -29,7 +29,6 @@ jobs:
       - store_artifacts:
           path: /tmp/myfile.txt
           destination: artifact-file
-          when: always
           
   integration:
     docker:
@@ -59,7 +58,9 @@ workflows:
       - secret_scanning:
           requires:
             - test
-      - integration
+      - integration:
+          requires:
+            - secret_scanning
       - prod:
           type: approval
           requires:
