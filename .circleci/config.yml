@@ -24,7 +24,6 @@ jobs:
           command: |
             echo "my artifact file" > /tmp/myfile.txt
             exit 1
-          when: on_fail         # Even if the job fails, continue to the next stages
 
       - store_artifacts:
           path: /tmp/myfile.txt
@@ -39,6 +38,7 @@ jobs:
           command: |
             echo "This is an integration step"
             exit 1
+          when: on_fail    
 
   prod:
     docker:
