@@ -24,7 +24,7 @@ jobs:
 
       - run:
           command: docker run --rm -v $(pwd):/src -w /src hysnsec/retire --outputformat json --outputpath retirejs-output.json --severity high
-          when: on_fail             # Even if the job fails, continue to the next stages
+          when: always             # Even if the job fails, continue to the next stages
 
       - store_artifacts:
           path: retirejs-output.json
