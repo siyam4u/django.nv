@@ -21,6 +21,9 @@ jobs:
     machine: true
     steps:
       - checkout
+      
+      - run:
+          command: npm install
 
       - run:
           command: docker run --rm -v $(pwd):/src -w /src hysnsec/retire --outputformat json --outputpath retirejs-output.json --severity high
