@@ -21,14 +21,15 @@ jobs:
     machine: true
     steps:
       - checkout
-      
       - run:
           command: npm install
-
+          when: always
       - run:
           command: docker run --rm -v $(pwd):/src -w /src hysnsec/retire --outputformat json --outputpath retirejs-output.json --severity high
-          when: always             # Even if the job fails, continue to the next stages
-
+          when: always
+      - run:
+          command: ls -al # this command is intended to list directories so we can review whether retirejs-output.json exists in the present working directory or not
+          when: always
       - store_artifacts:
           path: retirejs-output.json
           destination: retirejs-artifact
